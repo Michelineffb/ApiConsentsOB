@@ -11,12 +11,12 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+
 
 
 @Document
 public class Consents {
-	
+
 	@Id
 	private String id;	
 	@CPF @NotNull(message = "CPF is mandatory")
@@ -25,7 +25,7 @@ public class Consents {
 	private String businessEntity;
 	private LocalDate transactionFromDateTime = LocalDate.now(); 
 	@DateTimeFormat @NotNull(message = "transactionToDateTime é um campo de preenchimento obrigatório")
-	private Date transactionToDateTime;
+	private LocalDate transactionToDateTime;
 	
 	public String getLoggedUser() {
 		return loggedUser;
@@ -44,15 +44,11 @@ public class Consents {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Date getTransactionToDateTime() {
+	public LocalDate getTransactionToDateTime() {
 		return transactionToDateTime;
 	}
-	public void setTransactionToDateTime(Date transactionToDateTime) {
+	public void setTransactionToDateTime(LocalDate transactionToDateTime) {
 		this.transactionToDateTime = transactionToDateTime;
-	}
-	public UsernamePasswordAuthenticationToken convert() {
-		// TODO Auto-generated method stub
-		return new UsernamePasswordAuthenticationToken(loggedUser, transactionToDateTime);
 	}
 	public String getBusinessEntity() {
 		return businessEntity;
