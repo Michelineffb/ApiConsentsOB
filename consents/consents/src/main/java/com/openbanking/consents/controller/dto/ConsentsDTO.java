@@ -8,7 +8,7 @@ import com.openbanking.consents.model.Consents;
 public class ConsentsDTO {
 	private String id;
 	private LocalDate transactionFromDateTime = LocalDate.now();
-	private Date transactionToDateTime;
+	private LocalDate transactionToDateTime;
 	
 	public ConsentsDTO(Consents consents) {
 		this.id = consents.getId();
@@ -22,7 +22,7 @@ public class ConsentsDTO {
 	public LocalDate getTransactionFromDateTime() {
 		return transactionFromDateTime;
 	}
-	public Date getTransactionToDateTime() {
+	public LocalDate getTransactionToDateTime() {
 		return transactionToDateTime;
 	}
 
